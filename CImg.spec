@@ -13,7 +13,7 @@ BuildRoot:	%_tmppath/%name-%version-root
 URL:		http://cimg.sourceforge.net/
 BuildRequires:	doxygen
 BuildRequires:  X11-devel, png-devel, jpeg-devel, tiff-devel, freetype-devel, libjbig-devel, libMagick-devel
-BuildRequires:  lcms-devel, jasper-devel, libdjvulibre-devel, libfontconfig-devel, libsm6-devel, libice-devel
+BuildRequires:  lcms-devel, jasper-devel, libdjvulibre-devel, libfontconfig-devel, libsm-devel, libice-devel
 BuildRequires:  bzip2-devel, libxml2-devel, fftw3-devel 
 
 %description
