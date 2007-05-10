@@ -1,16 +1,20 @@
-%define fver 1-11
+%define	name CImg
+%define version 1.2.0.3
+%define release %mkrel 1
 
 Summary:	Tools for advanced image processing
-Name:		CImg
-Version:	1.1.1
-Release:	%mkrel 2
-Source0:	http://download.sourceforge.net/libusb/%name-%fver.tar.bz2
+Name:		%name
+Version:	%version
+Release:	%release
+Source0:	http://download.sourceforge.net/libusb/%name-%version.tar.bz2
 License:	CeCiLL
 Group:		Graphics
 BuildRoot:	%_tmppath/%name-%version-root
 URL:		http://cimg.sourceforge.net/
 BuildRequires:	doxygen
-BuildRequires:  X11-devel
+BuildRequires:  X11-devel, png-devel, jpeg-devel, tiff-devel, freetype-devel, libjbig-devel, libMagick-devel
+BuildRequires:  lcms-devel, jasper-devel, libdjvulibre-devel, libfontconfig-devel, libsm6-devel, libice-devel
+BuildRequires:  bzip2-devel, libxml2-devel, fftw3-devel 
 
 %description
 
@@ -34,12 +38,12 @@ code is in the CImg.h file which is in this package. The main package
 is not needed to compile software using this library.
 
 %prep
-%setup -q -n %name-%fver
+%setup -q
 chmod -R go+rX .
 
 %build
 cd examples
-make "ARCHFLAGS=%{optflags}" all
+make "ARCHFLAGS=%{optflags}" Mlinux
 cd ..
 cd documentation
 doxygen CImg.doxygen
@@ -52,19 +56,24 @@ cp CImg.h %{buildroot}%{_includedir}
 
 cd examples
 install -d %{buildroot}%{_bindir}
-cp CImg_test \
+cp CImg_demo \
+     dtmri_view \
+     edge_explorer\
      fade_images \
      greycstoration \
+     greycstoration4integration\
      hough_transform \
-     image_registration \
      image2ascii \
+     image_registration \
+     image_surface \
      inrcast \
      mcf_levelsets \
+     mcf_levelsets3D\
+     nlmeans\
      odykill \
-     pslider \
-     pde_heatflow2D \
      pde_TschumperleDeriche2D \
-     render3d \
+     pde_heatflow2D \
+     pslider \
      tetris \
      tutorial \
      wavelet_atrous %{buildroot}%{_bindir}
@@ -77,7 +86,7 @@ rm -rf %buildroot
 %files
 %defattr(-,root,root)
 %_bindir/*
-%doc README.txt LICENSE*.txt CHANGES.txt
+%doc README.txt Licence*.txt CHANGES.txt
 
 %files devel
 %defattr(-,root,root)
