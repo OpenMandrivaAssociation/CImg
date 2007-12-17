@@ -12,7 +12,6 @@ Source0:	http://downloads.sourceforge.net/cimg/%name-%version.tar.bz2
 Patch0:		CImg-1.2.2.1-greycstoration-2.5.2.patch
 License:	CeCiLL
 Group:		Graphics
-BuildRoot:	%_tmppath/%name-%version-root
 URL:		http://cimg.sourceforge.net/
 BuildRequires:	doxygen
 BuildRequires:  X11-devel, png-devel, jpeg-devel, tiff-devel, freetype-devel, libjbig-devel, libMagick-devel
