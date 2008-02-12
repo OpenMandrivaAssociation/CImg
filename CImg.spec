@@ -20,7 +20,6 @@ BuildRequires:  lcms-devel, jasper-devel, libdjvulibre-devel, libfontconfig-deve
 BuildRequires:  bzip2-devel, libxml2-devel, fftw3-devel, gimp-devel
 
 %description
-
 Advanced image manipulation algorithms, including the GREYCSTORATION
 image regularization algorithm which is mainly used for removing image
 noise.
@@ -46,7 +45,6 @@ Group:		Graphics
 Version:	%greycstoration_version
 
 %description -n greycstoration
-
 GIMP plug-in to do noise removal with the help of the GREYCstoration
 algorithm. More sophisticated than built-in methods of most image
 manipulation software.
