@@ -1,15 +1,13 @@
 %define	name CImg
-%define version 1.2.2.1
-%define greycstoration_version 2.5.2
-%define release %mkrel 2
+%define version 1.2.7
+%define greycstoration_version 2.6
+%define release %mkrel 1
 
 Summary:	Tools for advanced image processing
 Name:		%name
 Version:	%version
 Release:	%release
-Source0:	http://downloads.sourceforge.net/cimg/%name-%version.tar.bz2
-# (fc) 1.2.2.1-2mdv Update to greycstoration version 2.5.2
-Patch0:		CImg-1.2.2.1-greycstoration-2.5.2.patch
+Source0:	http://downloads.sourceforge.net/cimg/%name-%version.tar.gz
 License:	CeCiLL
 Group:		Graphics
 BuildRoot:	%_tmppath/%name-%version-root
@@ -51,7 +49,6 @@ manipulation software.
 
 %prep
 %setup -q
-%patch0 -p1 -b .252
 chmod -R go+rX .
 
 %build
