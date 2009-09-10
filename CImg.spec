@@ -1,7 +1,7 @@
 %define	name CImg
 %define version 1.2.7
 %define greycstoration_version 2.6
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary:	Tools for advanced image processing
 Name:		%name
