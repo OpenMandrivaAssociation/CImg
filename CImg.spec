@@ -13,9 +13,8 @@ Group:		Graphics
 BuildRoot:	%_tmppath/%name-%version-root
 URL:		http://cimg.sourceforge.net/
 BuildRequires:	doxygen
-BuildRequires:  X11-devel, png-devel, jpeg-devel, tiff-devel, freetype-devel, libjbig-devel, libMagick-devel
-BuildRequires:  lcms-devel, jasper-devel, libdjvulibre-devel, libfontconfig-devel, libsm-devel, libice-devel
-BuildRequires:  bzip2-devel, libxml2-devel, fftw3-devel, gimp-devel
+BuildRequires:	gimp-devel
+BuildRequires:	imagemagick-devel
 
 %description
 Advanced image manipulation algorithms, including the GREYCSTORATION
@@ -55,7 +54,7 @@ chmod -R go+rX .
 cd examples
 # create optimized build with minimum dependencies
 %make ARCHFLAGS="-Dcimg_display_type=0 %{optflags}" all
-g++ -o greycstoration4gimp greycstoration4gimp.cpp `gimptool-2.0 --cflags --libs` -I.. -I ../plugins -lpthread %{optflags}
+g++ %optflags %ldflags -o greycstoration4gimp greycstoration4gimp.cpp `gimptool-2.0 --cflags --libs` -I.. -I ../plugins -lpthread
 
 cd ..
 cd documentation
