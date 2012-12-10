@@ -114,3 +114,43 @@ rm -rf %buildroot
 %defattr(-,root,root)
 %_bindir/greycstoration*
 %_libdir/gimp/2.0/plug-ins/*
+
+
+%changelog
+* Mon Jan 03 2011 Funda Wang <fwang@mandriva.org> 1.2.7-4mdv2011.0
++ Revision: 627690
+- tighten BR
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - fix spacing at top of description
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Tiago Salem <salem@mandriva.com.br>
+    - Upgrade to 1.2.7 version
+    - drop greycstoration patch. It is no longer required.
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Wed Jul 25 2007 Frederic Crozat <fcrozat@mandriva.com> 1.2.2.1-2mdv2008.0
++ Revision: 55537
+-Release 1.2.2.1
+-Patch0 : update greycstoration to 2.5.2.1
+-split greycstoration in a subpackage, including gimp plugin
+
+* Thu May 10 2007 Erwan Velu <erwan@mandriva.org> 1.2.0.3-1mdv2008.0
++ Revision: 26096
+- Fixing buildrequires
+- 1.2.0.3
+- 1.2.0.3
+- Import CImg
+
+
+
+* Wed Mar 08 2006 Nicolas Lécureuil <neoclust@mandriva.org> 1.1.1-2mdk
+- Add BuildRequires
+
+* Mon Feb  6 2006 Till Kamppeter <till@mandriva.com> 1.1.1-1mdk
+- Initial Mandriva release.
