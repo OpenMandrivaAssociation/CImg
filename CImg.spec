@@ -39,11 +39,11 @@ is not needed to compile software using this library.
 
 %prep
 %setup -q -n %{oname}-%{version}
-
-%build
 %ifarch %{arm}
 %patch0 -p1
 %endif
+
+%build
 pushd examples
 %make_build olinux
 popd
