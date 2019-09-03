@@ -1,0 +1,12 @@
+diff -Nru a/examples/Makefile b/examples/Makefile
+--- a/examples/Makefile	2018-11-30 14:12:18.000000000 +0100
++++ b/examples/Makefile	2018-12-03 14:55:48.173856583 +0100
+@@ -146,7 +146,7 @@
+ # Flags to enable code optimization by the compiler.
+ OPT_CFLAGS = -Ofast
+ ifdef IS_GCC
+-OPT_CFLAGS = -Ofast -mtune=generic
++OPT_CFLAGS = -Ofast
+ endif
+ ifdef IS_ICPC
+ OPT_CFLAGS = -fast
