@@ -15,6 +15,7 @@ BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libtiff-4)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	doxygen
+BuildRequires:  gomp-devel
 
 %description
 Advanced image manipulation algorithms, including the GREYCSTORATION
