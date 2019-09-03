@@ -5,6 +5,7 @@ Name:	cimg
 Version:	2.7.1
 Release:	1
 Source0:	http://cimg.eu/files/CImg_%{version}.zip
+Patch0:		cimg-2.4.2-arm.patch
 URL:		http://cimg.eu/
 License:	CeCiLLv2
 Group:		Graphics/Utilities
