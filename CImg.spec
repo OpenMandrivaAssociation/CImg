@@ -1,20 +1,20 @@
-%define	name CImg
-%define version 1.2.7
-%define greycstoration_version 2.6
-%define release 5
+%define	oname CImg
 
 Summary:	Tools for advanced image processing
-Name:		%name
-Version:	%version
-Release:	%release
-Source0:	http://downloads.sourceforge.net/cimg/%name-%version.tar.gz
-License:	CeCiLL
-Group:		Graphics
-BuildRoot:	%_tmppath/%name-%version-root
-URL:		http://cimg.sourceforge.net/
+Name:	cimg
+Version:	2.7.1
+Release:	1
+Source0:	http://cimg.eu/files/CImg_%{version}.zip
+URL:		http://cimg.eu/
+License:	CeCiLLv2
+Group:		Graphics/Utilities
+
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libjpeg)
+BuildRequires:	pkgconfig(libtiff-4)
+BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	doxygen
-BuildRequires:	gimp-devel
-BuildRequires:	imagemagick-devel
 
 %description
 Advanced image manipulation algorithms, including the GREYCSTORATION
@@ -36,84 +36,62 @@ Note that this library is not a dynamic library. The whole library
 code is in the CImg.h file which is in this package. The main package
 is not needed to compile software using this library.
 
-%package -n greycstoration
-Summary:	Tool for image noise removal using the GREYCstoration algorithm
-Group:		Graphics
-Version:	%greycstoration_version
-
-%description -n greycstoration
-GIMP plug-in to do noise removal with the help of the GREYCstoration
-algorithm. More sophisticated than built-in methods of most image
-manipulation software.
-
 %prep
-%setup -q
-chmod -R go+rX .
+%setup -q -n %{oname}-%{version}
 
 %build
-cd examples
-# create optimized build with minimum dependencies
-%make ARCHFLAGS="-Dcimg_display_type=0 %{optflags}" all
-g++ %optflags %ldflags -o greycstoration4gimp greycstoration4gimp.cpp `gimptool-2.0 --cflags --libs` -I.. -I ../plugins -lpthread
-
-cd ..
-cd documentation
-doxygen CImg.doxygen
-cd ..
+pushd examples
+%make_build olinux
+popd
 
 %install
+mkdir -p %{buildroot}%{_bindir}
+pushd examples
+mv captcha %{buildroot}%{_bindir}
+mv CImg_demo %{buildroot}%{_bindir}
+mv curve_editor2d %{buildroot}%{_bindir}
+mv dtmri_view3d %{buildroot}%{_bindir}
+mv edge_explorer2d %{buildroot}%{_bindir}
+mv fade_images %{buildroot}%{_bindir}
+mv gaussian_fit1d %{buildroot}%{_bindir}
+mv generate_loop_macros %{buildroot}%{_bindir}
+mv hough_transform2d %{buildroot}%{_bindir}
+mv image2ascii %{buildroot}%{_bindir}
+mv image_registration2d %{buildroot}%{_bindir}
+mv image_surface3d %{buildroot}%{_bindir}
+mv jawbreaker %{buildroot}%{_bindir}
+mv mcf_levelsets2d %{buildroot}%{_bindir}
+mv mcf_levelsets3d %{buildroot}%{_bindir}
+mv odykill %{buildroot}%{_bindir}
+mv pde_heatflow2d %{buildroot}%{_bindir}
+mv pde_TschumperleDeriche2d %{buildroot}%{_bindir}
+mv plotter1d %{buildroot}%{_bindir}
+mv radon_transform2d %{buildroot}%{_bindir}
+mv scene3d %{buildroot}%{_bindir}
+mv spherical_function3d %{buildroot}%{_bindir}
+mv tetris %{buildroot}%{_bindir}
+mv tron %{buildroot}%{_bindir}
+mv tutorial %{buildroot}%{_bindir}
+mv use_chlpca %{buildroot}%{_bindir}
+mv use_draw_gradient %{buildroot}%{_bindir}
+mv use_nlmeans %{buildroot}%{_bindir}
+mv use_RGBclass %{buildroot}%{_bindir}
+mv use_skeleton %{buildroot}%{_bindir}
+mv wavelet_atrous %{buildroot}%{_bindir}
+popd
 
-install -d %{buildroot}%{_includedir}
-cp CImg.h %{buildroot}%{_includedir}
-
-cd examples
-install -d %{buildroot}%{_bindir}
-cp CImg_demo \
-     dtmri_view \
-     edge_explorer\
-     fade_images \
-     greycstoration \
-     greycstoration4integration\
-     hough_transform \
-     image2ascii \
-     image_registration \
-     image_surface \
-     inrcast \
-     mcf_levelsets \
-     mcf_levelsets3D\
-     nlmeans\
-     odykill \
-     pde_TschumperleDeriche2D \
-     pde_heatflow2D \
-     pslider \
-     tetris \
-     tutorial \
-     wavelet_atrous %{buildroot}%{_bindir}
-
-install -d %{buildroot}%_libdir/gimp/2.0/plug-ins/
-cp  greycstoration4gimp %{buildroot}%_libdir/gimp/2.0/plug-ins/
-
-cd ..
-
-%clean
-rm -rf %buildroot
-
+mkdir -p %{buildroot}%{_includedir}/%{oname}
+mv plugins %{buildroot}%{_includedir}/%{oname}
+mv %{oname}.h %{buildroot}%{_includedir}/%{oname}
+ln -s %{oname}/%{oname}.h %{oname}.h
+mv %{oname}.h %{buildroot}%{_includedir}
 
 %files
-%defattr(-,root,root)
-%_bindir/* 
-%exclude %{_bindir}/greycstoration*
-%doc README.txt Licence*.txt CHANGES.txt
+%{_bindir}/*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/*
-%doc documentation/*
-
-%files -n greycstoration
-%defattr(-,root,root)
-%_bindir/greycstoration*
-%_libdir/gimp/2.0/plug-ins/*
+%{_includedir}/%{oname}*
+%doc README.txt Licence_CeCILL* examples resources/CImg_reference.pdf
 
 
 %changelog
@@ -149,7 +127,7 @@ rm -rf %buildroot
 
 
 
-* Wed Mar 08 2006 Nicolas Lécureuil <neoclust@mandriva.org> 1.1.1-2mdk
+* Wed Mar 08 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 1.1.1-2mdk
 - Add BuildRequires
 
 * Mon Feb  6 2006 Till Kamppeter <till@mandriva.com> 1.1.1-1mdk
