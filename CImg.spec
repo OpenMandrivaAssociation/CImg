@@ -2,7 +2,7 @@
 
 Summary:	Tools for advanced image processing
 Name:	cimg
-Version:	2.7.1
+Version:	2.9.1
 Release:	1
 Source0:	http://cimg.eu/files/CImg_%{version}.zip
 Patch0:		cimg-2.4.2-arm.patch
