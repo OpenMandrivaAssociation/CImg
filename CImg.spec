@@ -99,7 +99,7 @@ mv %{oname}.h %{buildroot}%{_includedir}
 
 %files devel
 %{_includedir}/%{oname}*
-%doc README.txt Licence_CeCILL* examples resources/CImg_reference.pdf
+%doc README.txt Licence_CeCILL* examples
 
 
 %changelog
