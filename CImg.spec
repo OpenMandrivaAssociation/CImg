@@ -5,7 +5,7 @@
 
 Summary:	Tools for advanced image processing
 Name:		cimg
-Version:	3.3.3
+Version:	3.3.5
 Release:	1
 Source0:	https://cimg.eu/files/CImg_%{version}.zip
 Patch0:		cimg-2.4.2-arm.patch
